@@ -1,9 +1,5 @@
-#include <wx/wx.h>
 #include <wx/taskbar.h>
 #include <wx/icon.h> 
-#include <wx/dc.h>
-#include <wx/image.h>
-#include <string>
 #include "TrayIcon.h"
 #include "Common.h"
 
