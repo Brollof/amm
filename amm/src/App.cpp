@@ -39,7 +39,8 @@ bool App::OnInit()
 {
   wxImage::AddHandler(new wxJPEGHandler);
   m_timer.Bind(wxEVT_TIMER, &App::OnTimer, this);
-  m_tray = new TrayIcon(this);
+  m_tray = new TrayIcon(this, true);
+  OnRunButton(true);
   return true;
 }
 

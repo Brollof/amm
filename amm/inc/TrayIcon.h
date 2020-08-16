@@ -8,7 +8,7 @@ class App;
 class TrayIcon : public wxTaskBarIcon
 {
 public:
-  TrayIcon(App* app);
+  TrayIcon(App* app, bool isActive);
   void SetActive(bool isActive);
 
 private:

@@ -10,10 +10,10 @@ BEGIN_EVENT_TABLE(TrayIcon, wxTaskBarIcon)
 END_EVENT_TABLE()
 
 
-TrayIcon::TrayIcon(App* app) : wxTaskBarIcon()
+TrayIcon::TrayIcon(App* app, bool isActive) : wxTaskBarIcon()
 {
   m_app = app;
-  SetActive(false);
+  SetActive(isActive);
 }
 
 wxMenu* TrayIcon::CreatePopupMenu()
