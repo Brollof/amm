@@ -1,4 +1,5 @@
 #include "App.h"
+#include "Version.h"
 
 wxIMPLEMENT_APP(App);
 
@@ -21,8 +22,8 @@ App::App()
   freopen_s(&fDummy, "CONOUT$", "w", stdout);
 #endif
 
-  // PrintVersion();
-  // PrintBuildType();
+  PrintVersion();
+  PrintBuildType();
 }
 
 App::~App()

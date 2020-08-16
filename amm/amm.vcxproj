@@ -16,7 +16,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\App.h" />
+    <ClInclude Include="inc\Common.h" />
     <ClInclude Include="inc\TrayIcon.h" />
+    <ClInclude Include="inc\Version.h" />
+    <ClInclude Include="res\resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res\amm.rc" />
@@ -24,6 +27,29 @@
   <ItemGroup>
     <Image Include="res\active.ico" />
     <Image Include="res\idle.ico" />
+    <Image Include="res\wx\msw\cdrom.ico" />
+    <Image Include="res\wx\msw\colours.bmp" />
+    <Image Include="res\wx\msw\computer.ico" />
+    <Image Include="res\wx\msw\csquery.bmp" />
+    <Image Include="res\wx\msw\drive.ico" />
+    <Image Include="res\wx\msw\file1.ico" />
+    <Image Include="res\wx\msw\floppy.ico" />
+    <Image Include="res\wx\msw\folder1.ico" />
+    <Image Include="res\wx\msw\folder2.ico" />
+    <Image Include="res\wx\msw\removble.ico" />
+    <Image Include="res\wx\msw\std.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\wx\msw\blank.cur" />
+    <None Include="res\wx\msw\bullseye.cur" />
+    <None Include="res\wx\msw\cross.cur" />
+    <None Include="res\wx\msw\hand.cur" />
+    <None Include="res\wx\msw\magnif1.cur" />
+    <None Include="res\wx\msw\pbrush.cur" />
+    <None Include="res\wx\msw\pencil.cur" />
+    <None Include="res\wx\msw\pntleft.cur" />
+    <None Include="res\wx\msw\pntright.cur" />
+    <None Include="res\wx\msw\roller.cur" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -84,7 +110,7 @@
       <AdditionalLibraryDirectories>$(WX_PATH)\lib\vc_lib\</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PreBuildEvent>
       <Command>taskkill /F /IM "amm.exe" 2&gt;nul &amp; Exit 0</Command>
@@ -109,7 +135,7 @@
       <AdditionalLibraryDirectories>$(WX_PATH)\lib\vc_lib\</AdditionalLibraryDirectories>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <PreBuildEvent>
       <Command>taskkill /F /IM "amm.exe" 2&gt;nul &amp; Exit 0</Command>
