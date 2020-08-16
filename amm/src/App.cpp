@@ -27,6 +27,10 @@ App::App()
 
 App::~App()
 {
+#ifdef _DEBUG
+  FreeConsole();
+#endif
+
   delete m_tray;
 }
 
