@@ -2,12 +2,14 @@
 
 #include "wx/wx.h"
 #include <wx/uiaction.h>
+#include "TrayIcon.h"
 
 class Main : public wxFrame
 {
 public:
   Main(std::string appName);
   ~Main();
+  void OnButtonRun(bool run);
 
 private:
   void OnTimer(wxTimerEvent& event);
@@ -16,6 +18,5 @@ private:
   wxTimer m_timer;
   wxPoint m_lastMousePos;
   wxUIActionSimulator m_sim;
-  // wxDECLARE_EVENT_TABLE();
-
+  TrayIcon* m_tray = nullptr;
 };
