@@ -1,21 +1,22 @@
 #pragma once
 
 #include <wx/taskbar.h>
+#include "App.h"
 
-class Main;
+class App;
 
 class TrayIcon : public wxTaskBarIcon
 {
 public:
-  TrayIcon(Main* frame);
+  TrayIcon(App* app);
   void SetActive(bool isActive);
 
 private:
   bool m_isActive = false;
-  Main* m_frame = nullptr;
   void OnMenuExit(wxCommandEvent& event);
   void OnMenuRun(wxCommandEvent& event);
   virtual wxMenu* CreatePopupMenu() wxOVERRIDE;
-  void SetIconFromNumber(int n);
+  App* m_app;
+
   DECLARE_EVENT_TABLE();
 };

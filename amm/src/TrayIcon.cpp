@@ -4,16 +4,8 @@
 #include <wx/dc.h>
 #include <wx/image.h>
 #include <string>
-#include "Main.h"
 #include "TrayIcon.h"
 #include "Common.h"
-
-
-#define ICON_SIZE                 32
-#define ACTIVE_NORMAL_COLOR       wxColour("GREEN")
-#define ACTIVE_BAD_COLOR          wxColour("YELLOW")
-#define ACTIVE_CRITICAL_COLOR     wxColour("RED")
-#define INACTIVE_COLOR            wxColour("GREY")
 
 
 BEGIN_EVENT_TABLE(TrayIcon, wxTaskBarIcon)
@@ -22,15 +14,10 @@ BEGIN_EVENT_TABLE(TrayIcon, wxTaskBarIcon)
 END_EVENT_TABLE()
 
 
-TrayIcon::TrayIcon(Main* window) : wxTaskBarIcon()
+TrayIcon::TrayIcon(App* app) : wxTaskBarIcon()
 {
-  m_frame = window;
+  m_app = app;
   SetActive(false);
-}
-
-void TrayIcon::OnMenuExit(wxCommandEvent& event)
-{
-  m_frame->Destroy();
 }
 
 wxMenu* TrayIcon::CreatePopupMenu()
@@ -60,6 +47,12 @@ void TrayIcon::SetActive(bool isActive)
 void TrayIcon::OnMenuRun(wxCommandEvent& event)
 {
   std::cout << "OnMenuRun" << std::endl;
+  event.Skip();
   SetActive(!m_isActive);
-  m_frame->OnButtonRun(m_isActive);
+  m_app->OnRunButton(m_isActive);
+}
+
+void TrayIcon::OnMenuExit(wxCommandEvent& event)
+{
+  m_app->Exit();
 }

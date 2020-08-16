@@ -12,12 +12,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\App.cpp" />
-    <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\TrayIcon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\App.h" />
-    <ClInclude Include="inc\Main.h" />
     <ClInclude Include="inc\TrayIcon.h" />
   </ItemGroup>
   <ItemGroup>
