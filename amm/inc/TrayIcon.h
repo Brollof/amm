@@ -15,6 +15,7 @@ private:
   bool m_isActive = false;
   void OnMenuExit(wxCommandEvent& event);
   void OnMenuRun(wxCommandEvent& event);
+  void OnLeftDoubleClick(wxTaskBarIconEvent& event);
   virtual wxMenu* CreatePopupMenu() wxOVERRIDE;
   App* m_app;
 

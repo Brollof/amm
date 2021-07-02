@@ -7,6 +7,7 @@
 BEGIN_EVENT_TABLE(TrayIcon, wxTaskBarIcon)
   EVT_MENU(ID_TRAY_BTN_EXIT, TrayIcon::OnMenuExit)
   EVT_MENU(ID_TRAY_BTN_RUN, TrayIcon::OnMenuRun)
+  EVT_TASKBAR_LEFT_DCLICK(TrayIcon::OnLeftDoubleClick)
 END_EVENT_TABLE()
 
 
@@ -51,4 +52,10 @@ void TrayIcon::OnMenuRun(wxCommandEvent& event)
 void TrayIcon::OnMenuExit(wxCommandEvent& event)
 {
   m_app->Exit();
+}
+
+void TrayIcon::OnLeftDoubleClick(wxTaskBarIconEvent& event)
+{
+  SetActive(!m_isActive);
+  m_app->OnRunButton(m_isActive);
 }
