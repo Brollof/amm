@@ -61,7 +61,7 @@ void App::OnTimer(wxTimerEvent& event)
     {
       std::cout << "moving mouse, dir: " << m_dir << std::endl;
       m_dir *= -1; // invert direction
-      m_sim.MouseMove({ m_lastMousePos.x + m_dir, m_lastMousePos.y });
+      m_sim.MouseMove({ pt.x + m_dir, pt.y });
     }
   }
   m_lastMousePos = pt;
