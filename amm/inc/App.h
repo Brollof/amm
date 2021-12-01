@@ -21,5 +21,4 @@ private:
   int m_dir = 1;
   wxTimer m_timer;
   wxPoint m_lastMousePos;
-  wxUIActionSimulator m_sim;
 };
