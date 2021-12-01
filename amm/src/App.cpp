@@ -47,11 +47,13 @@ bool App::OnInit()
 
 void App::OnTimer(wxTimerEvent& event)
 {
-  wxPoint pt = wxGetMousePosition();
+  wxMouseState mouse = wxGetMouseState();
+  wxPoint pt = { mouse.GetX(), mouse.GetY() };
+
   std::cout << pt << std::endl;
 
-  // Mouse has moved
-  if (pt != m_lastMousePos)
+  // Mouse move or button press detected
+  if (pt != m_lastMousePos || mouse.ButtonIsDown(wxMOUSE_BTN_ANY))
   {
     m_timCnt = 0;
   }
@@ -65,6 +67,7 @@ void App::OnTimer(wxTimerEvent& event)
       SetCursorPos(pt.x + m_dir, pt.y);
     }
   }
+
   m_lastMousePos = pt;
 }
 
