@@ -4,8 +4,7 @@
 
 wxIMPLEMENT_APP(App);
 
-#define MOUSE_IDLE_TIME 5000
-#define TIMER_PERIOD 500
+#define MOUSE_IDLE_TIME   5000 // ms
 
 std::ostream& operator<<(std::ostream& os, const wxPoint& pt)
 {
@@ -47,28 +46,9 @@ bool App::OnInit()
 
 void App::OnTimer(wxTimerEvent& event)
 {
-  wxMouseState mouse = wxGetMouseState();
-  wxPoint pt = { mouse.GetX(), mouse.GetY() };
-
-  std::cout << pt << std::endl;
-
-  // Mouse move or button press detected
-  if (pt != m_lastMousePos || mouse.ButtonIsDown(wxMOUSE_BTN_ANY))
-  {
-    m_timCnt = 0;
-  }
-  else
-  {
-    m_timCnt++;
-    if (m_timCnt * TIMER_PERIOD >= MOUSE_IDLE_TIME) // move mouse manually
-    {
-      m_dir *= -1; // invert direction
-      std::cout << "moving mouse, dir: " << m_dir << std::endl;
-      SetCursorPos(pt.x + m_dir, pt.y);
-    }
-  }
-
-  m_lastMousePos = pt;
+  std::cout << "moving mouse" << std::endl;
+  // actually we don't move mouse at all, just sending a mouse event
+  mouse_event(MOUSEEVENTF_MOVE, 0, 0, 0, 0);
 }
 
 void App::OnRunButton(bool run)
@@ -76,7 +56,7 @@ void App::OnRunButton(bool run)
   if (run)
   {
     std::cout << "AMM running" << std::endl;
-    m_timer.Start(TIMER_PERIOD);
+    m_timer.Start(MOUSE_IDLE_TIME);
   }
   else
   {
